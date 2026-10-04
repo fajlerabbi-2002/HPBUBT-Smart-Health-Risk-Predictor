@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HPBUBT-Smart Health Risk Predictor</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="appShell" class="app-shell active">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark">+</div>
+          <div class="brand-text">
+            <h2>HPBUBT-Smart Health Risk Predictor</h2>
+            <small>Wellness Hub</small>
+          </div>
+        </div>
+
+        <nav class="nav">
+          <div class="nav-item active" data-target="dashboardSection"><span class="icon">🏠</span>Dashboard</div>
+          <div class="nav-item" data-target="predictionSection"><span class="icon">🩺</span>Prediction</div>
+          <div class="nav-item" data-target="historySection"><span class="icon">🕘</span>History</div>
+          <div class="nav-item" data-target="profileSection"><span class="icon">👤</span>Profile</div>
+          <div class="nav-item" data-target="healthSection"><span class="icon">📘</span>Health Info</div>
+          <div class="nav-item" data-target="settingsSection"><span class="icon">⚙️</span>Settings</div>
+          <div class="nav-item" id="switchAccountBtn"><span class="icon">🔁</span>Switch Account</div>
+          <div class="nav-item" id="logoutBtn"><span class="icon">🚪</span>Logout</div>
+        </nav>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <div class="page-title">
+            <h1 id="welcomeTitle">Dashboard</h1>
+            <p>Health overview and risk insights</p>
+          </div>
+
+          <div class="top-actions">
+            <div class="search-box">🔎 Search health record</div>
+            <div class="user-pill">
+              <div class="avatar" id="headerAvatar">A</div>
+              <div>
+                <strong id="headerName">admin</strong><br />
+                <small id="headerEmail">admin@example.com</small>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <section id="dashboardSection" class="content-section active">
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="label">Overall Risk</div>
+              <div class="value" id="overallRiskValue">32%</div>
+              <div class="trend">+4% this month</div>
+            </div>
+            <div class="stat-card">
+              <div class="label">Predictions</div>
+              <div class="value" id="predictionCount">0</div>
+              <div class="trend">Updated daily</div>
+            </div>
+            <div class="stat-card">
+              <div class="label">Reminders</div>
+              <div class="value" id="reminderCount">3</div>
+              <div class="trend">2 due soon</div>
+            </div>
+            <div class="stat-card">
+              <div class="label">Health Score</div>
+              <div class="value" id="healthScoreValue">82</div>
+              <div class="trend">Excellent</div>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="panel">
+              <div class="panel-header">
+                <h3>Health Data Visualization</h3>
+                <span class="badge">7 Days</span>
+              </div>
+              <div class="chart-box">
+                <div class="bars">
+                  <div class="bar" data-label="Mon" style="height: 55%"></div>
+                  <div class="bar" data-label="Tue" style="height: 75%"></div>
+                  <div class="bar" data-label="Wed" style="height: 65%"></div>
+                  <div class="bar" data-label="Thu" style="height: 85%"></div>
+                  <div class="bar" data-label="Fri" style="height: 70%"></div>
+                  <div class="bar" data-label="Sat" style="height: 90%"></div>
+                  <div class="bar" data-label="Sun" style="height: 80%"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel">
+              <div class="panel-header">
+                <h3>Quick Actions</h3>
+                <span class="badge">Fast Track</span>
+              </div>
+              <div class="quick-actions">
+                <div class="quick-action" data-nav="predictionSection"><span class="emoji">🫀</span>Start Prediction</div>
+                <div class="quick-action" data-nav="healthSection"><span class="emoji">📚</span>Health Info</div>
+                <div class="quick-action" data-nav="historySection"><span class="emoji">📜</span>History</div>
+                <div class="quick-action"><span class="emoji">🔔</span>Set Reminder</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="predictionSection" class="content-section">
+          <div class="panel">
+            <div class="panel-header">
+              <h3>Heart Disease Risk Prediction</h3>
+              <span class="badge">Symptom-based assessment</span>
+            </div>
+
+            <form id="predictionForm">
+              <div class="prediction-form">
+                <div class="field">
+                  <label for="age">Age</label>
+                  <input id="age" type="number" min="18" max="90" value="35" required />
+                </div>
+
+                <div class="field">
+                  <label for="gender">Gender</label>
+                  <select id="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label for="bloodPressure">Blood Pressure</label>
+                  <input id="bloodPressure" type="number" min="80" max="200" value="120" required />
+                </div>
+
+                <div class="field">
+                  <label for="cholesterol">Cholesterol</label>
+                  <input id="cholesterol" type="number" min="120" max="320" value="190" required />
+                </div>
+
+                <div class="field">
+                  <label for="bmi">BMI</label>
+                  <input id="bmi" type="number" min="15" max="60" step="0.1" value="26.5" required />
+                </div>
+
+                <div class="field">
+                  <label for="smoking">Smoking</label>
+                  <select id="smoking">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label for="exercise">Exercise Level</label>
+                  <select id="exercise">
+                    <option value="0">Low</option>
+                    <option value="1">Moderate</option>
+                    <option value="2">High</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label for="stress">Stress Level</label>
+                  <select id="stress">
+                    <option value="1">Low</option>
+                    <option value="2">Moderate</option>
+                    <option value="3">High</option>
+                  </select>
+                </div>
+
+                <div class="field full-width">
+                  <label for="symptoms">Symptoms</label>
+                  <input id="symptoms" type="text" placeholder="e.g. chest pain, shortness of breath, dizziness" required />
+                </div>
+              </div>
+
+              <div class="button-row">
+                <button class="btn btn-primary" type="submit">Check Risk</button>
+                <button class="btn btn-secondary" type="reset">Reset</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="panel" style="margin-top: 22px;">
+            <div class="panel-header">
+              <h3>Risk Result Details</h3>
+              <span class="badge">Latest analysis</span>
+            </div>
+
+            <div id="riskResult" class="result-card">
+              <div>
+                <div class="score-ring" id="scoreRing" style="--score: 32;">
+                  <div class="score-text">
+                    <strong id="scoreValue">32%</strong>
+                    <span>Risk</span>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div id="riskStatus" class="risk-status">Moderate risk detected</div>
+                <ul class="detail-list">
+                  <li><span>Risk Category</span><strong id="riskCategory">Moderate</strong></li>
+                  <li><span>Primary Trigger</span><strong id="riskTrigger">Elevated blood pressure</strong></li>
+                  <li><span>Recommended Action</span><strong id="riskAction">Consult a doctor within 2 weeks</strong></li>
+                  <li><span>Likely Symptoms</span><strong id="riskSymptoms">Chest discomfort, fatigue</strong></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="historySection" class="content-section">
+          <div class="panel">
+            <div class="panel-header">
+              <h3>Prediction History</h3>
+              <span class="badge" id="historyBadge">0 records</span>
+            </div>
+            <div id="historyList" class="history-list"></div>
+          </div>
+        </section>
+
+        <section id="profileSection" class="content-section">
+          <div class="profile-grid">
+            <div class="panel profile-card">
+              <div class="avatar avatar-lg" id="profileAvatar">A</div>
+              <h3 id="profileName">admin</h3>
+              <p id="profileEmail">admin@example.com</p>
+              <span class="badge">Member since 2026</span>
+            </div>
+
+            <div class="panel">
+              <div class="panel-header">
+                <h3>User Profile</h3>
+                <span class="badge">Updated</span>
+              </div>
+
+              <div class="mini-grid">
+                <div class="mini-stat">
+                  <span>Age</span>
+                  <strong id="profileAge">35</strong>
+                </div>
+                <div class="mini-stat">
+                  <span>Gender</span>
+                  <strong id="profileGender">Male</strong>
+                </div>
+                <div class="mini-stat">
+                  <span>Height</span>
+                  <strong id="profileHeight">170 cm</strong>
+                </div>
+                <div class="mini-stat">
+                  <span>Weight</span>
+                  <strong id="profileWeight">72 kg</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="healthSection" class="content-section">
+          <div class="grid-2">
+            <div class="panel">
+              <div class="panel-header">
+                <h3>Health Reminders</h3>
+                <span class="badge">Daily care</span>
+              </div>
+              <div id="reminderList" class="reminder-list"></div>
+            </div>
+
+            <div class="panel">
+              <div class="panel-header">
+                <h3>Health Information</h3>
+                <span class="badge">Guidance</span>
+              </div>
+              <div id="infoList" class="info-list"></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="databaseSection" class="content-section">
+          <div class="panel">
+            <div class="panel-header">
+              <h3>MySQL Database Setup</h3>
+              <span class="badge">SQL ready</span>
+            </div>
+
+            <div class="info-item">
+              <strong>Database purpose</strong>
+              <small>Stores users, risk predictions, health reminders, and account settings in MySQL.</small>
+            </div>
+
+            <pre class="sql-block">CREATE DATABASE health_predictor;
+
+USE health_predictor;
+
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  email VARCHAR(150) UNIQUE NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  age INT,
+  gender VARCHAR(20),
+  height INT,
+  weight INT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE predictions (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  score INT NOT NULL,
+  risk_label VARCHAR(20) NOT NULL,
+  symptoms TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE settings (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  notifications BOOLEAN DEFAULT TRUE,
+  dark_mode BOOLEAN DEFAULT FALSE,
+  weekly_reports BOOLEAN DEFAULT TRUE,
+  FOREIGN KEY (user_id) REFERENCES users(id)
+);</pre>
+          </div>
+        </section>
+
+        <section id="settingsSection" class="content-section">
+          <div class="panel">
+            <div class="panel-header">
+              <h3>Settings</h3>
+              <span class="badge">Preferences</span>
+            </div>
+            <div class="settings-list" id="settingsList"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="accountModal" class="account-modal hidden">
+      <div class="account-card">
+        <div class="account-tabs">
+          <button class="account-tab active" data-account-tab="login">Login</button>
+          <button class="account-tab" data-account-tab="register">Sign Up</button>
+        </div>
+
+        <form id="accountLoginForm" class="account-form active">
+          <h2>Login to another account</h2>
+          <div class="field">
+            <label for="loginEmailModal">Email</label>
+            <input id="loginEmailModal" type="email" placeholder="you@example.com" required />
+          </div>
+
+          <div class="field">
+            <label for="loginPasswordModal">Password</label>
+            <input id="loginPasswordModal" type="password" placeholder="Enter password" required />
+          </div>
+
+          <div class="button-row modal-actions">
+            <button class="btn btn-primary" type="submit">Login</button>
+            <button class="btn btn-secondary" type="button" id="closeAccountModal">Cancel</button>
+          </div>
+        </form>
+
+        <form id="accountRegisterForm" class="account-form">
+          <h2>Create a new account</h2>
+          <div class="field">
+            <label for="regNameModal">Full Name</label>
+            <input id="regNameModal" type="text" placeholder="Your full name" required />
+          </div>
+
+          <div class="field">
+            <label for="regEmailModal">Email</label>
+            <input id="regEmailModal" type="email" placeholder="you@example.com" required />
+          </div>
+
+          <div class="field">
+            <label for="regPasswordModal">Password</label>
+            <input id="regPasswordModal" type="password" placeholder="Create password" required />
+          </div>
+
+          <div class="button-row modal-actions">
+            <button class="btn btn-primary" type="submit">Sign Up</button>
+            <button class="btn btn-secondary" type="button" id="closeAccountModalRegister">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
